@@ -747,6 +747,46 @@ export function setPageWidth(
   return true;
 }
 
+export function setKeymapWidth(
+  val: MonkeyTypes.KeymapWidth,
+  nosave?: boolean
+): boolean {
+  if (
+    !isConfigValueValid("keymap width", val, [["100", "125", "150", "200"]])
+  ) {
+    return false;
+  }
+
+  config.keymapWidth = val;
+  $("#keymap").removeClass("gap125");
+  $("#keymap").removeClass("gap150");
+  $("#keymap").removeClass("gap200");
+  $("#keymap .row").removeClass("row125");
+  $("#keymap .row").removeClass("row150");
+  $("#keymap .row").removeClass("row200");
+  $("#keymap .keymapKey").removeClass("key125");
+  $("#keymap .keymapKey").removeClass("key150");
+  $("#keymap .keymapKey").removeClass("key200");
+  $("#keymap .r2").removeClass("rowTwo125");
+  $("#keymap .r2").removeClass("rowTwo150");
+  $("#keymap .r2").removeClass("rowTwo200");
+  $("#keymap .keymapKey.keySpace").removeClass("space125");
+  $("#keymap .keymapKey.keySpace").removeClass("space150");
+  $("#keymap .keymapKey.keySpace").removeClass("space200");
+
+  if (val !== "100") {
+    $("#keymap").addClass("gap" + val);
+    $("#keymap .row").addClass("row" + val);
+    $("#keymap .keymapKey").addClass("key" + val);
+    $("#keymap .r2").addClass("rowTwo" + val);
+    $("#keymap .keymapKey.keySpace").addClass("space" + val);
+  }
+  saveToLocalStorage("keymapWidth", nosave);
+  ConfigEvent.dispatch("keymapWidth", config.keymapWidth);
+
+  return true;
+}
+
 export function setCaretStyle(
   caretStyle: MonkeyTypes.CaretStyle,
   nosave?: boolean

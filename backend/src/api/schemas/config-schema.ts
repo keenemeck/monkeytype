@@ -102,6 +102,7 @@ const CONFIG_SCHEMA = joi.object({
   paceCaretCustomSpeed: joi.number().min(0),
   repeatedPace: joi.boolean(),
   pageWidth: joi.string().valid("100", "125", "150", "200", "max"),
+  keymapWidth: joi.string().valid("100", "125", "150", "200"),
   accountChart: joi.array().items(joi.string().valid("on", "off")).optional(),
   minWpm: joi.string().valid("off", "custom"),
   minWpmCustomSpeed: joi.number().min(0),

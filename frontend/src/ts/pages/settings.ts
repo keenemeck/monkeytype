@@ -82,11 +82,13 @@ async function initGroups(): Promise<void> {
     () => {
       if (Config.keymapMode === "off") {
         $(".pageSettings .section.keymapStyle").addClass("hidden");
+        $(".pageSettings .section.keymapWidth").addClass("hidden");
         $(".pageSettings .section.keymapLayout").addClass("hidden");
         $(".pageSettings .section.keymapLegendStyle").addClass("hidden");
         $(".pageSettings .section.keymapShowTopRow").addClass("hidden");
       } else {
         $(".pageSettings .section.keymapStyle").removeClass("hidden");
+        $(".pageSettings .section.keymapWidth").removeClass("hidden");
         $(".pageSettings .section.keymapLayout").removeClass("hidden");
         $(".pageSettings .section.keymapLegendStyle").removeClass("hidden");
         $(".pageSettings .section.keymapShowTopRow").removeClass("hidden");
@@ -320,6 +322,11 @@ async function initGroups(): Promise<void> {
   groups["pageWidth"] = new SettingsGroup(
     "pageWidth",
     UpdateConfig.setPageWidth,
+    "button"
+  ) as SettingsGroup<MonkeyTypes.ConfigValues>;
+  groups["keymapWidth"] = new SettingsGroup(
+    "keymapWidth",
+    UpdateConfig.setKeymapWidth,
     "button"
   ) as SettingsGroup<MonkeyTypes.ConfigValues>;
   groups["caretStyle"] = new SettingsGroup(

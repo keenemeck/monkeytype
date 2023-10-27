@@ -146,6 +146,8 @@ declare namespace MonkeyTypes {
 
   type PageWidth = "100" | "125" | "150" | "200" | "max";
 
+  type KeymapWidth = "100" | "125" | "150" | "200";
+
   type AccountChart = ("off" | "on")[];
 
   type MinimumWordsPerMinute = "off" | "custom";
@@ -484,6 +486,7 @@ declare namespace MonkeyTypes {
     paceCaretCustomSpeed: number;
     repeatedPace: boolean;
     pageWidth: PageWidth;
+    keymapWidth: KeymapWidth;
     accountChart: AccountChart;
     minWpm: MinimumWordsPerMinute;
     minWpmCustomSpeed: number;
